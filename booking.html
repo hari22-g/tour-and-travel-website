@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Book Jyotirlinga Tour</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div id="menu-bar" class="fas fa-bars"></div>
+        <a href="index.html" class="logo"><span>T</span>ravel</a>
+        <nav class="navbar">
+            <a href="index.html#home">home</a>
+            <a href="index.html#book">book</a>
+            <a href="index.html#packages">packages</a>
+            <a href="index.html#services">services</a>
+            <a href="index.html#gallery">gallery</a>
+            <a href="index.html#review">review</a>
+            <a href="index.html#contact">contact</a>
+            <a href="index.html#scan-qr">Scan QR</a>
+        </nav>
+        <div class="icons">
+            <i class="fas fa-user" id="login-btn"></i>
+        </div>
+    </header>
+
+    <!-- Login Form -->
+    <div class="login-form-container">
+        <i class="fas fa-times" id="form-close"></i>
+        <form action="">
+            <h3>login</h3>
+            <input type="email" class="box" placeholder="enter your email">
+            <input type="password" class="box" placeholder="enter your password">
+            <input type="submit" value="login now" class="btn">
+            <input type="checkbox" id="remember">
+            <label for="remember">remember me</label>
+            <p>forget password? <a href="#">click here</a></p>
+            <p>don't have an account? <a href="#">register now</a></p>
+        </form>
+    </div>
+
+    <!-- Booking Section -->
+    <section class="booking" id="booking">
+        <h1 class="heading">
+            <span>b</span>
+            <span>o</span>
+            <span>o</span>
+            <span>k</span>
+            <span class="space"></span>
+            <span>t</span>
+            <span>o</span>
+            <span>u</span>
+            <span>r</span>
+        </h1>
+        <div class="row">
+            <div class="image">
+                <img id="jyotirlinga-image" src="" alt="">
+            </div>
+            <form id="booking-form">
+                <h3 id="jyotirlinga-name">Loading...</h3>
+                <div class="inputBox">
+                    <h3>base price</h3>
+                    <p id="base-price">₹0</p>
+                </div>
+                <div class="inputBox">
+                    <h3>number of persons</h3>
+                    <input type="number" id="number-of-persons" min="1" value="1" required>
+                </div>
+                <div class="inputBox">
+                    <h3>total price</h3>
+                    <p id="total-price">₹0</p>
+                </div>
+                <button type="button" id="pay-now-btn" class="btn">Pay Now</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="booking.js"></script>
+</body>
+</html>
