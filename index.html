@@ -13,18 +13,18 @@
         <a href="#" class="logo"><span>T</span>ravel</a>
         <nav class="navbar">
             <a href="#home">home</a>
-            <a href="#book">book</a>
             <a href="#packages">packages</a>
             <a href="#services">services</a>
             <a href="#gallery">gallery</a>
             <a href="#review">review</a>
             <a href="#contact">contact</a>
-            <a href="#scan-qr">Scan QR</a>
         </nav>
-        <label for="jyotirlingas">Select jyotirlingas:</label>
+
+        <div class="header-select-wrap">
             <select id="jyotirlingas" name="jyotirlingas">
+                <option value="" selected disabled>Select jyotirlingas</option>
                 <option value="Somnath">Somnath</option>
-                <option value="mallikarjuna">mallikarjuna</option>
+                <option value="mallikarjuna">Mallikarjuna</option>
                 <option value="Mahakaleshwar">Mahakaleshwar</option>
                 <option value="Omkareshwar">Omkareshwar</option>
                 <option value="Kedarnath">Kedarnath</option>
@@ -36,19 +36,11 @@
                 <option value="Rameshwaram">Rameshwaram</option>
                 <option value="Grishneshwar">Grishneshwar</option>
             </select>
+        </div>
+
         <div class="icons">
-            <i class="fas fa-search" id="search-btn"></i>
             <i class="fas fa-user" id="login-btn"></i>
         </div>
-        <form action="" class="search-bar-container">
-            <input type="search" id="search-bar" placeholder="search here...">
-            <label for="search-bar" class="fas fa-search"></label>
-            <div class="dropdown" id="dropdown">
-                <ul id="dropdown-list">
-                    <!-- Dropdown items populated via JavaScript -->
-                </ul>
-            </div>
-        </form>
         <div class="catalog-container" id="catalog-container" style="display: none;">
             <div class="catalog-box">
                 <img id="catalog-image" src="" alt="">
@@ -64,19 +56,101 @@
     </header>
 
     <!-- Login Form -->
-    <div class="login-form-container">
-        <i class="fas fa-times" id="form-close"></i>
-        <form action="">
-            <h3>login</h3>
-            <input type="email" class="box" placeholder="enter your email">
-            <input type="password" class="box" placeholder="enter your password">
-            <input type="submit" value="login now" class="btn">
-            <input type="checkbox" id="remember">
-            <label for="remember">remember me</label>
-            <p>forget password? <a href="#">click here</a></p>
-            <p>don't have an account? <a href="#">register now</a></p>
-        </form>
+    <div class="login-form-container" id="auth-modal">
+        <div class="auth-card">
+            <button type="button" class="form-close" id="form-close" aria-label="Close login form">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="auth-header">
+                <h3>Welcome</h3>
+                <p>Plan your spiritual journey with ease</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button type="button" class="tab-btn active" data-target="login-form">Login</button>
+                <button type="button" class="tab-btn" data-target="signup-form">Sign Up</button>
+            </div>
+
+            <form class="auth-form active" id="login-form">
+                <div class="input-group">
+                    <label for="login-email">Email</label>
+                    <input id="login-email" type="email" class="box" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password</label>
+                    <input id="login-password" type="password" class="box" placeholder="Enter your password" required>
+                </div>
+                <div class="form-row">
+                    <label for="remember"><input type="checkbox" id="remember"> Remember me</label>
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn">Login now</button>
+            </form>
+
+            <form class="auth-form" id="signup-form">
+                <div class="input-group">
+                    <label for="signup-name">Full Name</label>
+                    <input id="signup-name" type="text" class="box" placeholder="Enter your full name" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-email">Email</label>
+                    <input id="signup-email" type="email" class="box" placeholder="Enter your email" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-password">Password</label>
+                    <input id="signup-password" type="password" class="box" placeholder="Create a password" required>
+                </div>
+                <button type="submit" class="btn">Create account</button>
+            </form>
+        </div>
     </div>
+
+    <div id="signup-success-toast" class="signup-toast">Sign up successful! Thank you.</div>
+
+    <aside class="user-profile-panel" id="user-profile-panel">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div>
+                <h3 id="profile-name">Guest User</h3>
+                <p id="profile-email">demo@example.com</p>
+            </div>
+            <button type="button" class="profile-close" id="profile-close" aria-label="Close profile panel">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="profile-body">
+            <div class="profile-row">
+                <span>Name</span>
+                <strong id="profile-name-value">-</strong>
+            </div>
+            <div class="profile-row">
+                <span>Password</span>
+                <strong id="profile-password-value">-</strong>
+            </div>
+            <div class="profile-row">
+                <span>Booked Place</span>
+                <strong id="profile-booked-place">-</strong>
+            </div>
+            <div class="profile-row">
+                <span>Saved Temples</span>
+                <ul id="profile-wishlist" class="past-bookings-list">
+                    <li>No saved temples yet</li>
+                </ul>
+            </div>
+            <div class="profile-row">
+                <span>Past Bookings</span>
+                <ul id="profile-past-bookings" class="past-bookings-list">
+                    <li>No past bookings yet</li>
+                </ul>
+            </div>
+        </div>
+
+        <button type="button" class="btn logout-btn" id="logout-btn">Logout</button>
+    </aside>
 
     <!-- Home Section -->
     <section class="home" id="home">
@@ -97,61 +171,7 @@
         </div>
     </section>
 
-    <!-- Book Section -->
-    <section class="book" id="book">
-        <h1 class="heading">
-            <span>b</span>
-            <span>o</span>
-            <span>o</span>
-            <span>k</span>
-            <span class="space"></span>
-            <span>n</span>
-            <span>o</span>
-            <span>w</span>
-        </h1>
-        <div class="row">
-            <div class="image">
-                <img src="images/book-img.svg" alt="">
-            </div>
-            <form action="">
-                <div class="inputBox">
-                    <h3>where to</h3>
-                    <select name="dropdown" style="width: 604.23px; padding: 5px;">
-                        <option value="Somnath">Somnath</option>
-                        <option value="mallikarjuna">mallikarjuna</option>
-                        <option value="Mahakaleshwar">Mahakaleshwar</option>
-                        <option value="Omkareshwar">Omkareshwar</option>
-                        <option value="Kedarnath">Kedarnath</option>
-                        <option value="Bhimashankar">Bhimashankar</option>
-                        <option value="Kashi Vishwanath">Kashi Vishwanath</option>
-                        <option value="Trimbakeshwar">Trimbakeshwar</option>
-                        <option value="Vaidyanath">Vaidyanath</option>
-                        <option value="Nageshwar">Nageshwar</option>
-                        <option value="Rameshwaram">Rameshwaram</option>
-                        <option value="Grishneshwar">Grishneshwar</option>
-
-</select>
-                    
-                </div>
-                <div class="inputBox">
-                    <h3>how many</h3>
-                    <input type="number" placeholder="number of guests">
-                </div>
-                <div class="inputBox">
-                    <h3>arrivals</h3>
-                    <input type="date">
-                </div>
-                <div class="inputBox">
-                    <h3>leaving</h3>
-                    <input type="date">
-                </div>
-                <input type="submit" class="btn" value="book now">
-            </form>
-        </div>
-    </section>
-
-    <!-- Packages Section -->
-    <section class="packages" id="packages">
+    <section class="temple-showcase" id="packages">
         <h1 class="heading">
             <span>p</span>
             <span>a</span>
@@ -162,153 +182,30 @@
             <span>e</span>
             <span>s</span>
         </h1>
-        <div class="box-container">
-            <div class="box">
-                <img src="images/Somnath.jpg" alt="">
-                <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Somnath </h3>
-                    <p>The first and most revered Jyotirlinga, standing majestically on the shores of the Arabian Sea in Gujarat.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> ₹950 <span> ₹1200 </span> </div>
-                    <a href="#" class="btn">book now</a>
-                </div>
+        <div class="temple-grid" id="templeGrid"></div>
+    </section>
+
+    <div class="temple-detail-modal" id="templeDetailModal" aria-hidden="true">
+        <div class="temple-detail-content">
+            <button type="button" class="close-modal" id="closeTempleModal" aria-label="Close">&times;</button>
+            <div class="modal-image-wrap">
+                <img id="modalImage" src="" alt="Temple preview" />
             </div>
-            <div class="box">
-                <img src="images/Mallikarjuna.jpg" alt="">
-                <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Mallikarjuna </h3>
-                    <p>Nestled in the hills of Srisailam, Andhra Pradesh, symbolizing divine unity and eternal love.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> ₹980 <span> ₹1250 </span> </div>
-                    <a href="#" class="btn">book now</a>
+            <div class="modal-info">
+                <div class="modal-badge" id="modalBadge">Pilgrimage</div>
+                <h3 id="modalTitle">Temple Name</h3>
+                <p id="modalDescription"></p>
+
+                <div class="budget-tabs" id="budgetTabs">
+                    <button type="button" class="budget-btn active" data-level="low">Low</button>
+                    <button type="button" class="budget-btn" data-level="medium">Medium</button>
+                    <button type="button" class="budget-btn" data-level="high">High</button>
                 </div>
-            </div>
-            <div class="box">
-                <img src="images/Mahakaleshwar.jpg" alt="">
-                <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Mahakaleshwar </h3>
-                    <p>Located in Ujjain, Madhya Pradesh, a sacred Jyotirlinga where Lord Shiva is worshipped as the eternal timekeeper.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> ₹960 <span> ₹1200 </span> </div>
-                    <a href="#" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/Omkareshwar.jpg" alt="">
-                <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Omkareshwar </h3>
-                    <p>Located on the sacred island shaped like the Om symbol in Madhya Pradesh.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> ₹920 <span> ₹1150 </span> </div>
-                    <a href="#" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/Kedarnath.jpg" alt="">
-                <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Kedarnath </h3>
-                    <p>Perched in the Himalayas of Uttarakhand, drawing pilgrims to its serene altitude.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> ₹1500 <span> ₹1800 </span> </div>
-                    <a href="#" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/Bhimashankar.jpg" alt="">
-                <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Bhimashankar </h3>
-                    <p>Nestled in the Sahyadri hills of Maharashtra, surrounded by lush forests.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> ₹890 <span> ₹1100 </span> </div>
-                    <a href="#" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/kashi.jpg" alt="">
-                <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Kashi Vishwanath </h3>
-                    <p>One of the holiest Shiva shrines in the spiritual heart of Varanasi.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> ₹970 <span> ₹1200 </span> </div>
-                    <a href="#" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/Trimbakeshwar.jpg" alt="">
-                <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Trimbakeshwar </h3>
-                    <p>Near Nashik in Maharashtra, symbolizing the unity of creation, preservation, and destruction.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> ₹900 <span> ₹1200 </span> </div>
-                    <a href="#" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/Vaidyanath.jpg" alt="">
-                <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Vaidyanath </h3>
-                    <p>In Deoghar, Jharkhand, worshipped as the divine healer.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> ₹990 <span> ₹1250 </span> </div>
-                    <a href="#" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/Nageshwar.jpg" alt="">
-                <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Nageshwar </h3>
-                    <p>Near Dwarka in Gujarat, symbolizing divine strength and serenity.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> ₹910 <span> ₹1100 </span> </div>
-                    <a href="#" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/Rameshwaram.jpg" alt="">
-                <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Rameshwaram </h3>
-                    <p>On the serene island of Tamil Nadu, symbolizing devotion and redemption.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> ₹1050 <span> ₹1300 </span> </div>
-                    <a href="#" class="btn">book now</a>
-                </div>
-            </div>
-            <div class="box">
-                <img src="images/Grishneshwar.jpg" alt="">
-                <div class="content">
-                    <h3><i class="fas fa-map-marker-alt"></i> Grishneshwar </h3>
-                    <p>Near Ellora Caves in Maharashtra, radiating divine grace.</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                    </div>
-                    <div class="price"> ₹880 <span> ₹1050 </span> </div>
-                    <a href="#" class="btn">book now</a>
-                </div>
+
+                <div class="package-panel" id="packagePanel"></div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Services Section -->
     <section class="services" id="services">
@@ -441,6 +338,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="video-preview-box">
+            <video id="videoPlayer" controls playsinline muted></video>
+        </div>
     </section>
 
     <!-- Review Section -->
@@ -523,35 +424,6 @@
         </div>
     </section>
 
-    <!-- Scan QR Section -->
-    <section class="scan-qr" id="scan-qr">
-        <h1 class="heading">
-            <span>s</span>
-            <span>c</span>
-            <span>a</span>
-            <span>n</span>
-            <span class="space"></span>
-            <span>q</span>
-            <span>r</span>
-        </h1>
-        <div class="row">
-            <div class="scanner-wrapper">
-                <div class="scanner-box">
-                    <h2>📷 Scan QR</h2>
-                    <button id="scanBtn">Start QR Scan</button>
-                    <button id="resetBtn">Reset Scan</button>
-                    <div id="qr-reader"></div>
-                </div>
-                <div id="introOverlay" style="display:none;">
-                    <p>Loading your experience...</p>
-                </div>
-                <div class="video-box">
-                    <h2>🎥 Video Preview</h2>
-                    <video id="videoPlayer" controls></video>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer Section -->
     <section class="footer">
@@ -585,7 +457,7 @@
                 <a href="#">linkedin</a>
             </div>
         </div>
-        <h1 class="credit"> created by <span> mr. web designer </span> | all rights reserved! </h1>
+        <h1 class="credit"> created by <span> HARESH BHARWAD </span> | all rights reserved! </h1>
     </section>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

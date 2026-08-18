@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import temples from '../data/temples';
 
 export default function TempleListPage() {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-[#fffaf3] px-4 py-10 text-slate-800 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -34,17 +36,19 @@ export default function TempleListPage() {
                 <h2 className="text-3xl font-extrabold tracking-tight text-slate-900">{temple.name}</h2>
 
                 <div className="mt-6 flex items-center justify-end gap-3">
-                  <Link
-                    to={`/temple/${temple.slug}`}
+                  <button
+                    type="button"
+                    onClick={() => navigate(`/temple/${temple.slug}`)}
                     className="inline-flex items-center justify-center rounded-full bg-[#f59e0b] px-5 py-3 text-sm font-bold text-white shadow-lg shadow-[#f59e0b]/25 transition hover:-translate-y-0.5 hover:bg-[#e08a00]"
                   >
                     Explore More
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );

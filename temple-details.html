@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temple Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="temple-details-page">
+    <header class="details-header">
+      <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to packages</a>
+    </header>
+
+    <main class="temple-details-shell">
+      <section class="temple-detail-page-card">
+        <div class="detail-image-wrap">
+          <img id="detailImage" src="" alt="Temple" />
+        </div>
+
+        <div class="detail-info-wrap">
+          <div class="modal-badge" id="detailBadge">Pilgrimage</div>
+          <h1 id="detailTitle">Temple Name</h1>
+          <p id="detailDescription" class="detail-description"></p>
+
+          <div class="budget-tabs" id="detailBudgetTabs">
+            <button type="button" class="budget-btn active" data-level="low">Low</button>
+            <button type="button" class="budget-btn" data-level="medium">Medium</button>
+            <button type="button" class="budget-btn" data-level="high">High</button>
+          </div>
+
+          <div class="package-panel" id="detailPackagePanel"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="temple-details.js"></script>
+  </body>
+</html>
