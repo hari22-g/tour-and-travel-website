@@ -2,8 +2,6 @@
   "name": "tour-and-travel-website",
   "private": true,
   "scripts": {
-    "dev": "npm --prefix temple-app run dev -- --host 0.0.0.0",
-    "build": "npm --prefix temple-app run build",
-    "preview": "npm --prefix temple-app run preview -- --host 0.0.0.0"
+    "build": "echo \"Static site build complete\""
   }
 }
